@@ -12,14 +12,6 @@ A powerful handwriting-based math note-taking app built with **Next.js**. It let
 
 
 ##  Demo Videos
+[![Watch on YouTube](https://img.youtube.com/vi/h2LBImhTQVM/0.jpg)](https://www.youtube.com/watch?v=h2LBImhTQVM)
 
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/h2LBImhTQVM?si=stFVe5IBhbg-aOCq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/LS0F8nW9rYk?si=GJ6B7C0uqDOIQcbX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-
-cd smart-math-note-taker
-npm install
-npm run dev
+[![Watch on YouTube](https://img.youtube.com/vi/LS0F8nW9rYk/0.jpg)](https://www.youtube.com/watch?v=LS0F8nW9rYk)
