@@ -21,9 +21,8 @@ A powerful handwriting-based math note-taking app built with **Next.js**. It let
 
 ###  Math expressions
 
-<video controls muted width="600">
-  <source src="https://raw.githubusercontent.com/yupAyush/Smart-Math-Notetaker/main/videos/equations%20(1).mp4" type="video/mp4" />
-</video>
+[▶️ Watch Demo](https://raw.githubusercontent.com/yupAyush/Smart-Math-Notetaker/main/videos/equations%20(1).mp4)
+
 
 cd smart-math-note-taker
 npm install
