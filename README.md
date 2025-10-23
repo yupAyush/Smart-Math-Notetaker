@@ -1,6 +1,6 @@
 #  Smart Math Note Taker
 
-A powerful handwriting-based math note-taking app built with **Next.js**. It lets users draw math expressions on a canvas, recognizes the content using OCR, and calculates results instantly. Designed for intuitive interaction, responsive UI, and real-time feedback.
+A powerful handwriting-based math note-taking app built with **Next.js**. It lets users draw math expressions on a canvas, recognizes the content using OCR, and calculates results instantly. Designed for intuitive interaction, and real-time feedback.
 
 ##  Features
 
