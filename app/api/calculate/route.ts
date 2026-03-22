@@ -1,15 +1,15 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+// app/api/calculate/route.ts
+import { GoogleGenAI } from "@google/genai";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
     try {
         const { img, list_of_var }: any = await request.json();
-        
 
         // Remove base64 prefix if present
         let base64Img = img;
-        if (img.startsWith('data:image/png;base64,')) {
-            base64Img = img.replace('data:image/png;base64,', '');
+        if (img.startsWith('data:image/')) {
+            base64Img = img.split(',')[1];
         }
 
         const prompt = `
@@ -30,7 +30,7 @@ export async function POST(request: Request) {
         Analyze the equation or expression in this image and return the answer according to the given rules:
         Make sure to use extra backslashes for escape characters like \\f -> \\\\f, \\n -> \\\\n, etc.
         Here is a dictionary of user-assigned variables. If the given expression has any of these variables, use its actual value from this dictionary accordingly: ${JSON.stringify(list_of_var)}.
-        DO NOT USE BACKTICKS OR MARKDOWN FORMATTING.DONT WRITE GIVE IT IN JSON FORMAT 
+        DO NOT USE BACKTICKS OR MARKDOWN FORMATTING. DONT WRITE GIVE IT IN JSON FORMAT 
         PROPERLY QUOTE THE KEYS AND VALUES IN THE JSON FOR EASIER PARSING JAVASCRIPT.
         `;
 
@@ -38,26 +38,30 @@ export async function POST(request: Request) {
             throw new Error('Missing GOOGLE_GENERATIVE_AI_API_KEY in environment variables');
         }
 
-        const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GENERATIVE_AI_API_KEY);
-        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-001" });
-        
-        const result = await model.generateContent([
-            prompt,
-            { inlineData: { data: base64Img, mimeType: 'image/png' } }
-        ]);
+        const ai = new GoogleGenAI({ apiKey: process.env.GOOGLE_GENERATIVE_AI_API_KEY });
 
-        const response =  result.response;
-        const text = response.text();
+        const response = await ai.models.generateContent({
+            model: "gemini-2.5-flash",
+            contents: [
+                {
+                    parts: [
+                        { text: prompt },
+                        { inlineData: { data: base64Img, mimeType: "image/png" } },
+                    ],
+                },
+            ],
+        });
+
+        const text = response.text;
 
         console.log("Gemini response:", JSON.stringify(text));
 
-     
-        return new Response(JSON.stringify({text}))
+        return NextResponse.json({ text });
 
     } catch (error: any) {
         console.log("Couldn't generate response from backend:", error?.message, error);
-        return NextResponse.json({ 
-            error: error?.message || "Internal Server Error" 
+        return NextResponse.json({
+            error: error?.message || "Internal Server Error"
         }, { status: 500 });
     }
 }

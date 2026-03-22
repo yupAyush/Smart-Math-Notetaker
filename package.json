@@ -9,13 +9,15 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@google/generative-ai": "^0.24.1",
+    "@google/genai": "^1.46.0",
     "@mantine/core": "^8.3.5",
     "@mantine/hooks": "^8.3.5",
     "axios": "^1.12.2",
+    "groq-sdk": "^1.1.1",
     "next": "15.5.6",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "tesseract.js": "^7.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
